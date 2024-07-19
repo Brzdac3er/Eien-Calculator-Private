@@ -19,7 +19,10 @@ function renderHeader() {
 
     <div class="header-right">
       <div class="other-projects">
-        <a href="" class="other-project-link">Other Projects</a>
+        <a href="https://brzdac3er.github.io/Other-Projects-Webiste/index.html" 
+          class="other-project-link">
+          Other Projects
+        </a>
       </div>
     </div>
   `;
