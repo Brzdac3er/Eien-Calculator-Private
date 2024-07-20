@@ -1,4 +1,4 @@
-function renderCalculator() {
+export function renderCalculator() {
   const calculatorHTML = document.querySelector(".js-calculator");
   calculatorHTML.innerHTML += `
     <div class="calculator-body">
@@ -45,5 +45,3 @@ function renderCalculator() {
     </div>
   `;
 }
-
-export default renderCalculator;
