@@ -1,9 +1,9 @@
 @font-face {
-  font-family: Retro;
+  font-family: Retro-reg;
   src: url(./google-fonts/Silkscreen/Silkscreen-Regular.ttf);
 }
 
 @font-face {
-  font-family: Ubuntu;
+  font-family: Ubuntu-reg;
   src: url(./google-fonts/Ubuntu/Ubuntu-Regular.ttf);
 }

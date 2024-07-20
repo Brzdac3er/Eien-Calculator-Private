@@ -23,11 +23,13 @@
 .creator-name {
   font-size: 2rem;
   color: rgb(130, 160, 190);
+  font-family: var(--header-font);
 }
 
 .other-project-link,
 .profile-link {
   font-size: 2rem;
+  font-family: var(--header-font);
   text-decoration: none;
   cursor: pointer;
   color: rgb(130, 160, 190);

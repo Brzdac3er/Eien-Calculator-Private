@@ -2,8 +2,8 @@
 
 :root {
   /* Fonts */
-  --calculator-font: Retro;
-  --header-font: Ubuntu;
+  --calculator-font: Retro-reg;
+  --header-font: Ubuntu-reg;
 
   /* Calculator */
   --display-color: 1DD977;
