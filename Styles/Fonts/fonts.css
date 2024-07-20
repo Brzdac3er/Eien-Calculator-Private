@@ -2,3 +2,8 @@
   font-family: Retro;
   src: url(./google-fonts/Silkscreen/Silkscreen-Regular.ttf);
 }
+
+@font-face {
+  font-family: Ubuntu;
+  src: url(./google-fonts/Ubuntu/Ubuntu-Regular.ttf);
+}
