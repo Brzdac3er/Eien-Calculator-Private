@@ -8,7 +8,7 @@ function renderCalculator() {
 
       <div class="calculator-btns">
         <div class="top-btns">
-          <button class="top-btn secondary-btn">Clear</button>
+          <button class="top-btn secondary-btn clear-btn">Clear</button>
           <button class="top-btn secondary-btn">√</button>
           <button class="top-btn secondary-btn">/</button>
           <button class="top-btn secondary-btn">X</button>
@@ -38,7 +38,7 @@ function renderCalculator() {
         <div class="bot-btns">
           <button class="bot-btn primary-btn">0</button>
           <button class="bot-btn primary-btn">.</button>
-          <button class="bot-btn primary-btn">=</button>
+          <button class="bot-btn primary-btn result-btn">=</button>
           <button class="bot-btn secondary-btn">%</button>
         </div>
       </div>

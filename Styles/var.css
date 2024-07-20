@@ -2,10 +2,10 @@
 
 :root {
   /* Fonts */
-  --retro-font: Retro;
+  --calculator-font: Retro;
 
   /* Calculator */
   --display-color: 1DD977;
-  --primary-color: E3E3E3;
+  --primary-color: EEDFDF;
   --seconadry-color: 178E05;
 }

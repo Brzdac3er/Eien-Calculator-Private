@@ -5,8 +5,7 @@ function renderHeader() {
     <div class="header-left">
       <div class="profile">
         <a href="https://github.com/Brzdac3er" class="profile-link">
-          <img src="../../Images/Header-Profile/header-profile.png" alt="profile picture" 
-            class="profile-picture" />
+          My GitHub 
         </a> 
       </div>
     </div>
