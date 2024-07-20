@@ -1,0 +1,11 @@
+@import url("./Fonts/fonts.css");
+
+:root {
+  /* Fonts */
+  --retro-font: Retro;
+
+  /* Calculator */
+  --display-color: 1DD977;
+  --primary-color: E3E3E3;
+  --seconadry-color: 178E05;
+}
