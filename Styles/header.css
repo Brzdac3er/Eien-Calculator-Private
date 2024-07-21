@@ -1,0 +1,46 @@
+@import url("var.css");
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.header-left,
+.header-right,
+.header-middle {
+  width: 100%;
+}
+
+.header-left,
+.header-right,
+.header-middle {
+  text-align: center;
+}
+
+.creator-name {
+  font-size: 2rem;
+  color: rgb(130, 160, 190);
+  font-family: var(--header-font);
+}
+
+.other-project-link,
+.profile-link {
+  font-size: 2rem;
+  font-family: var(--header-font);
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(130, 160, 190);
+}
+
+.other-project-link:hover,
+.profile-link:hover {
+  color: rgb(160, 240, 100);
+}
+
+.other-project-link:after,
+.profile-link:after {
+  color: rgb(160, 240, 200);
+}
