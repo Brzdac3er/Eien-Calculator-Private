@@ -3,7 +3,7 @@ export function renderCalculator() {
   calculatorHTML.innerHTML += `
     <div class="calculator-body">
       <div class="calculation-display">
-        <input type="text" name="display" class="input-display"/>
+        <input type="text" name="display" placeholder="0" class="input-display"/>
       </div>
 
       <div class="calculator-btns">

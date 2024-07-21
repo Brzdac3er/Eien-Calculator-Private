@@ -2,7 +2,33 @@
 @import url("general.css");
 @import url("header.css");
 
-
-
 /* Calculator */
+.calculator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.calculator-body {
+  background-color: #181920;
+  border: 3px solid #A5A5A5;
+  width: 350px;
+  height: 450px;
+}
+
+.input-display {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #1DD977;
+  height: 70px;
+  background-color: #427342;
+  border: none;
+  border-bottom: 3px solid #A5A5A5;
+  font-family: var(--calculator-font);
+  font-size: 4rem;
+}
+
+.input-display:focus {
+  outline: none;
+}

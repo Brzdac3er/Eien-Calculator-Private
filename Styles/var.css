@@ -6,7 +6,7 @@
   --header-font: Ubuntu-reg;
 
   /* Calculator */
-  --display-color: 1DD977;
-  --primary-color: EEDFDF;
-  --seconadry-color: 178E05;
+  --display-color: #1DD977;
+  --primary-btn-color: #EEDFDF;
+  --seconadry-btn-color: #178E05;
 }
