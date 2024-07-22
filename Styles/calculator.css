@@ -27,7 +27,7 @@
   border: none;
   border-bottom: 3px solid #a5a5a5;
   font-family: var(--calculator-font);
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .input-display:focus {
@@ -85,6 +85,27 @@
 }
 
 .clear-btn {
-  width: 70px;
+  width: 135px;
   font-size: 1px;
+}
+
+.top-btns {
+  position: relative;
+  right: 2px;
+}
+
+/* History */
+.history {
+  background-color: #181920;
+  border: 3px solid #a5a5a5;
+  width: 300px; 
+  height: 420px;
+  color: #E3E3E3;
+  margin-left: 50px;
+  display: none;
+}
+
+.history-title {
+  text-align: center;
+  font-family: var(--calculator-font);
 }
