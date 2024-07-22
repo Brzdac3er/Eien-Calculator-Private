@@ -100,7 +100,11 @@ function getFromStorage() {
 
 function showHistory() {
   const historyContainer = document.querySelector(".js-history");
-  historyContainer.classList.add("show");
+  historyContainer.classList.toggle("hide");
+
+  historyContainer.innerHTML += `
+    <p></p>
+  `;
 }
 
 getFromStorage();

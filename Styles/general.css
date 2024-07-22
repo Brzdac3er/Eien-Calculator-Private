@@ -9,6 +9,6 @@ html {
   font-size: 62.5%;
 }
 
-.show {
-  display: initial;
+.hide {
+  display: none;
 }

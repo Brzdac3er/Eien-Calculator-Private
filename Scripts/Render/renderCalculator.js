@@ -10,7 +10,7 @@ export function renderCalculator() {
         <div class="top-btns">
           <button class="top-btn secondary-btn clear-btn js-clear-btn">Clear</button>
           <button class="semi-mid-btn secondary-btn js-clear-all-btn">CA</button>
-          <button class="bot-btn secondary-btn js-show-history-btn">SH</button>
+          <button class="bot-btn secondary-btn js-show-history-btn">His</button>
         </div>
         
         <div class="semi-top-btns">
