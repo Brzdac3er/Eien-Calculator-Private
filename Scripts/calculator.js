@@ -4,9 +4,11 @@ import { renderCalculator } from "./Render/renderCalculator.js";
 renderHeader();
 renderCalculator();
 
+let calculation = [];
+
 function calculator() {
-  const equalBtn = document.querySelector(".js-equal-btn"); 
-  const clearBtn = document.querySelector(".js-clear-btn"); 
+  const equalBtn = document.querySelector(".js-equal-btn");
+  const clearBtn = document.querySelector(".js-clear-btn");
   const clearAllBtn = document.querySelector(".js-clear-all-btn");
   const showHistoryBtn = document.querySelector(".js-show-history-btn");
 
@@ -26,7 +28,6 @@ function calculator() {
   const multiplyBtn = document.querySelector(".js-multiply-btn");
   const minusBtn = document.querySelector(".js-minus-btn");
   const plusBtn = document.querySelector(".js-plus-btn");
-
 
   document.body.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -84,6 +85,11 @@ function clearHistory() {
   const calculationDisplay = document.querySelector(".js-input-display");
   calculationDisplay.value = "";
 
+  const historyContainer = document.querySelector(".js-history-container");
+  historyContainer.innerHTML = "";
+
+  calculation = [];
+
   localStorage.removeItem("calculation");
   saveToStorage();
 }
@@ -91,20 +97,31 @@ function clearHistory() {
 function saveToStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
   localStorage.setItem("calculation", calculationDisplay.value);
+  saveHistory();
+}
+
+function saveHistory() {
+  const calculationDisplay = document.querySelector(".js-input-display");
+  const historyContainer = document.querySelector(".js-history-container");
+  calculation.push(calculationDisplay.value);
+
+  const calculationSet = new Set(calculation);
+  const uniqueCalculation = [...calculationSet];
+  const lastValue = uniqueCalculation[uniqueCalculation.length - 1];
+
+  historyContainer.innerHTML += `
+    <p>${lastValue}</p>
+  `;
 }
 
 function getFromStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
-  calculationDisplay.value = localStorage.getItem("calculation"); 
+  calculationDisplay.value = localStorage.getItem("calculation");
 }
 
 function showHistory() {
-  const historyContainer = document.querySelector(".js-history");
-  historyContainer.classList.toggle("hide");
-
-  historyContainer.innerHTML += `
-    <p></p>
-  `;
+  const history = document.querySelector(".js-history");
+  history.classList.toggle("hide");
 }
 
 getFromStorage();
