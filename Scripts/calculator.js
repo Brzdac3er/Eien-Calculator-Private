@@ -107,6 +107,7 @@ function saveToStorage() {
 function generateHistory() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
+
   calculation.push(calculationDisplay.value);
 
   const calculationSet = new Set(calculation);
@@ -130,3 +131,4 @@ function showHistory() {
   const history = document.querySelector(".js-history");
   history.classList.toggle("hide");
 }
+
