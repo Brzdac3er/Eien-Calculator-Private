@@ -99,8 +99,8 @@ function saveToStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   localStorage.setItem("calculation", calculationDisplay.value);
-  localStorage.setItem("calculationHistory", calculation);
-  localStorage.setItem("historyContainer", historyContainer.innerHTML);
+  localStorage.setItem("calculationHistory", JSON.stringify(calculation));
+  localStorage.setItem("historyContainer", JSON.stringify(historyContainer.innerHTML));
   generateHistory();
 }
 
@@ -123,12 +123,16 @@ function getFromStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   calculationDisplay.value = localStorage.getItem("calculation");
-  calculation = localStorage.getItem("calculationHistory") || [];
-  historyContainer.innerHTML = localStorage.getItem("historyContainer") || ``;
+  const storedCalculation = localStorage.getItem("calculationHistory");
+  if (storedCalculation) {
+    calculation = JSON.parse(storedCalculation);
+  } else {
+    calculation = [];
+  }
+  historyContainer.innerHTML = JSON.parse(localStorage.getItem("historyContainer")) || ``;
 }
 
 function showHistory() {
   const history = document.querySelector(".js-history");
   history.classList.toggle("hide");
 }
-
