@@ -45,7 +45,7 @@ export function renderCalculator() {
 
     <div class="history js-history">
       <h1 class="history-title">History</h1>
-      <div class="js-history-container"></div> 
+      <div class="js-history-container history-container"></div> 
     </div>
   `;
 }

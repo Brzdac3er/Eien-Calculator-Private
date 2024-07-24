@@ -1,10 +1,12 @@
 import { renderHeader } from "./Render/renderHeader.js";
 import { renderCalculator } from "./Render/renderCalculator.js";
 
+let calculation = [];
+
 renderHeader();
 renderCalculator();
-
-let calculation = [];
+calculator();
+getFromStorage();
 
 function calculator() {
   const equalBtn = document.querySelector(".js-equal-btn");
@@ -62,21 +64,21 @@ function calculator() {
 
 function calculate(sign) {
   const calculationDisplay = document.querySelector(".js-input-display");
-  let calculation = sign;
+  let calculationSign = sign;
 
-  calculationDisplay.value += calculation;
+  calculationDisplay.value += calculationSign;
+
+  calculation.push(calculationSign);
   saveToStorage();
 }
 
 function clear() {
   const calculationDisplay = document.querySelector(".js-input-display");
-
   calculationDisplay.value = "";
 }
 
 function equal() {
   const calculationDisplay = document.querySelector(".js-input-display");
-
   calculationDisplay.value = eval(calculationDisplay.value);
   saveToStorage();
 }
@@ -87,7 +89,6 @@ function clearHistory() {
 
   const historyContainer = document.querySelector(".js-history-container");
   historyContainer.innerHTML = "";
-
   calculation = [];
 
   localStorage.removeItem("calculation");
@@ -96,11 +97,14 @@ function clearHistory() {
 
 function saveToStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
+  const historyContainer = document.querySelector(".js-history-container");
   localStorage.setItem("calculation", calculationDisplay.value);
-  saveHistory();
+  localStorage.setItem("calculationHistory", calculation);
+  localStorage.setItem("historyContainer", historyContainer.innerHTML);
+  generateHistory();
 }
 
-function saveHistory() {
+function generateHistory() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   calculation.push(calculationDisplay.value);
@@ -116,13 +120,13 @@ function saveHistory() {
 
 function getFromStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
+  const historyContainer = document.querySelector(".js-history-container");
   calculationDisplay.value = localStorage.getItem("calculation");
+  calculation = localStorage.getItem("calculationHistory") || [];
+  historyContainer.innerHTML = localStorage.getItem("historyContainer") || ``;
 }
 
 function showHistory() {
   const history = document.querySelector(".js-history");
   history.classList.toggle("hide");
 }
-
-getFromStorage();
-calculator();
