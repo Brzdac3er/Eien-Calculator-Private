@@ -115,7 +115,8 @@ function generateHistory() {
   const lastValue = uniqueCalculation[uniqueCalculation.length - 1];
 
   historyContainer.innerHTML += `
-    <p>${lastValue}</p>
+    <p class="calculation-value">${lastValue}</p>
+    <hr>
   `;
 }
 
