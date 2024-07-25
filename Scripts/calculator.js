@@ -96,12 +96,12 @@ function clearHistory() {
 }
 
 function saveToStorage() {
+  generateHistory();
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   localStorage.setItem("calculation", calculationDisplay.value);
   localStorage.setItem("calculationHistory", JSON.stringify(calculation));
   localStorage.setItem("historyContainer", JSON.stringify(historyContainer.innerHTML));
-  generateHistory();
 }
 
 function generateHistory() {
