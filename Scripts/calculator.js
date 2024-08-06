@@ -39,7 +39,13 @@ function calculator() {
       clear();
     }
   });
-  equalBtn.addEventListener("click", () => equal());
+  equalBtn.addEventListener("click", () => {
+    setTimeout(() => {
+      equal();
+      generateHistory();
+    }, 1);
+    generateHistory();
+  });
   clearBtn.addEventListener("click", () => clear());
   clearAllBtn.addEventListener("click", () => clearHistory());
   showHistoryBtn.addEventListener("click", () => showHistory());
@@ -96,12 +102,14 @@ function clearHistory() {
 }
 
 function saveToStorage() {
-  generateHistory();
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   localStorage.setItem("calculation", calculationDisplay.value);
   localStorage.setItem("calculationHistory", JSON.stringify(calculation));
-  localStorage.setItem("historyContainer", JSON.stringify(historyContainer.innerHTML));
+  localStorage.setItem(
+    "historyContainer",
+    JSON.stringify(historyContainer.innerHTML),
+  );
 }
 
 function generateHistory() {
@@ -130,7 +138,8 @@ function getFromStorage() {
   } else {
     calculation = [];
   }
-  historyContainer.innerHTML = JSON.parse(localStorage.getItem("historyContainer")) || ``;
+  historyContainer.innerHTML =
+    JSON.parse(localStorage.getItem("historyContainer")) || ``;
 }
 
 function showHistory() {
