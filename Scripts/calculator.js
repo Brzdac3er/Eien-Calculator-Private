@@ -7,6 +7,7 @@ renderHeader();
 renderCalculator();
 calculator();
 getFromStorage();
+generateHistory();
 
 function calculator() {
   const equalBtn = document.querySelector(".js-equal-btn");
