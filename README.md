@@ -1,3 +1,3 @@
 **Link to the Page here below**
 
-https://brzdac3er.github.io/Eien-Calculator/index.html
+https://Eien2.github.io/Eien-Calculator/index.html
