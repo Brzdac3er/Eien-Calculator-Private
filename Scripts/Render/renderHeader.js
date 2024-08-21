@@ -4,7 +4,7 @@ export function renderHeader() {
   header.innerHTML += `
     <div class="header-left">
       <div class="profile">
-        <a href="https://github.com/Brzdac3er" target="_blank" class="profile-link">
+        <a href="https://github.com/Eien2" target="_blank" class="profile-link">
           My GitHub 
         </a> 
       </div>
@@ -18,7 +18,7 @@ export function renderHeader() {
 
     <div class="header-right">
       <div class="other-projects">
-        <a href="https://brzdac3er.github.io/Other-Projects-Webiste/index.html" 
+        <a href="https://Eien2.github.io/Other-Projects-Webiste/index.html" 
           target="_blank"
           class="other-project-link">
           Other Projects
