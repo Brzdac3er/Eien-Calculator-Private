@@ -7,7 +7,7 @@ renderHeader();
 renderCalculator();
 calculator();
 getFromStorage();
-equal();
+generateHistory();
 
 function calculator() {
   // Vars
@@ -36,7 +36,11 @@ function calculator() {
   // On Key Events
   document.body.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-      equal();
+      generateHistory();
+
+      setTimeout(() => {
+        equal();
+      });
     }
     if (event.key === "Backspace") {
       clear();
@@ -77,7 +81,7 @@ function calculator() {
   plusBtn.addEventListener("click", () => calculate(" + "));
 }
 
-// Calculate fun
+// Calculate Fun
 function calculate(sign) {
   const calculationDisplay = document.querySelector(".js-input-display");
   let calculationSign = sign;
@@ -88,13 +92,13 @@ function calculate(sign) {
   saveToStorage();
 }
 
-// Clear fun
+// Clear Fun
 function clear() {
   const calculationDisplay = document.querySelector(".js-input-display");
   calculationDisplay.value = "";
 }
 
-// Equal fun
+// Equal Fun
 function equal() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
@@ -108,8 +112,8 @@ function equal() {
       if (calculationDisplay.value == `${calc} / 0`) {
         historyContainer.lastElementChild.remove();
         historyContainer.lastElementChild.remove();
-        alert("You can't divide by zero")
-        calculationDisplay.value = "";
+        calculation.splice(calculation.length - 1, 6);
+        calculationDisplay.value =  "You can't divide by zero";
         saveToStorage();
       } else {
         calculationDisplay.value = eval(calculationDisplay.value);
@@ -152,13 +156,16 @@ function generateHistory() {
   const historyContainer = document.querySelector(".js-history-container");
 
   calculation.push(calculationDisplay.value);
+  const lastCalcVal = calculation[calculation.length - 1]
 
-  const calculationSet = new Set(calculation);
-  const uniqueCalculation = [...calculationSet];
-  const lastValue = uniqueCalculation[uniqueCalculation.length - 1];
+  /* TEMP
+    const calculationSet = new Set(calculation);
+    const uniqueCalculation = [...calculationSet];
+    const lastValue = uniqueCalculation[uniqueCalculation.length - 1];
+  */
 
   historyContainer.innerHTML += `
-    <p class="calculation-value">${lastValue}</p>
+    <p class="calculation-value">${lastCalcVal}</p>
     <hr>
   `;
 }
