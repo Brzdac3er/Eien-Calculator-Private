@@ -7,9 +7,10 @@ renderHeader();
 renderCalculator();
 calculator();
 getFromStorage();
-generateHistory();
+equal();
 
 function calculator() {
+  // Vars
   const equalBtn = document.querySelector(".js-equal-btn");
   const clearBtn = document.querySelector(".js-clear-btn");
   const clearAllBtn = document.querySelector(".js-clear-all-btn");
@@ -32,6 +33,7 @@ function calculator() {
   const minusBtn = document.querySelector(".js-minus-btn");
   const plusBtn = document.querySelector(".js-plus-btn");
 
+  // On Key Events
   document.body.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       equal();
@@ -40,17 +42,22 @@ function calculator() {
       clear();
     }
   });
+
+  // Equal Event
   equalBtn.addEventListener("click", () => {
+    generateHistory();
+
     setTimeout(() => {
       equal();
-      generateHistory();
     }, 1);
-    generateHistory();
   });
+
+  // Misc Events
   clearBtn.addEventListener("click", () => clear());
   clearAllBtn.addEventListener("click", () => clearHistory());
   showHistoryBtn.addEventListener("click", () => showHistory());
 
+  // Nums Events
   nineBtn.addEventListener("click", () => calculate("9"));
   eightBtn.addEventListener("click", () => calculate("8"));
   sevenBtn.addEventListener("click", () => calculate("7"));
@@ -62,6 +69,7 @@ function calculator() {
   oneBtn.addEventListener("click", () => calculate("1"));
   zeroBtn.addEventListener("click", () => calculate("0"));
 
+  // Calculate Events
   dotBtn.addEventListener("click", () => calculate("."));
   devideBtn.addEventListener("click", () => calculate(" / "));
   multiplyBtn.addEventListener("click", () => calculate(" * "));
@@ -69,6 +77,7 @@ function calculator() {
   plusBtn.addEventListener("click", () => calculate(" + "));
 }
 
+// Calculate fun
 function calculate(sign) {
   const calculationDisplay = document.querySelector(".js-input-display");
   let calculationSign = sign;
@@ -79,17 +88,39 @@ function calculate(sign) {
   saveToStorage();
 }
 
+// Clear fun
 function clear() {
   const calculationDisplay = document.querySelector(".js-input-display");
   calculationDisplay.value = "";
 }
 
+// Equal fun
 function equal() {
   const calculationDisplay = document.querySelector(".js-input-display");
-  calculationDisplay.value = eval(calculationDisplay.value);
-  saveToStorage();
+  const historyContainer = document.querySelector(".js-history-container");
+  const calcArray = Array.from(calculationDisplay.value);
+
+  calcArray.forEach((val, i) => {
+    if (val == " ") {
+      calcArray.splice(i, 4);
+      const calc = calcArray.join("");
+
+      if (calculationDisplay.value == `${calc} / 0`) {
+        historyContainer.lastElementChild.remove();
+        historyContainer.lastElementChild.remove();
+        alert("You can't divide by zero")
+        calculationDisplay.value = "";
+        saveToStorage();
+      } else {
+        calculationDisplay.value = eval(calculationDisplay.value);
+        saveToStorage();
+        generateHistory();
+      }
+    }
+  });
 }
 
+// Clear History
 function clearHistory() {
   const calculationDisplay = document.querySelector(".js-input-display");
   calculationDisplay.value = "";
@@ -102,9 +133,11 @@ function clearHistory() {
   saveToStorage();
 }
 
+// Save Storage
 function saveToStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
+
   localStorage.setItem("calculation", calculationDisplay.value);
   localStorage.setItem("calculationHistory", JSON.stringify(calculation));
   localStorage.setItem(
@@ -113,6 +146,7 @@ function saveToStorage() {
   );
 }
 
+// Generate History
 function generateHistory() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
@@ -129,11 +163,13 @@ function generateHistory() {
   `;
 }
 
+// Get Storage
 function getFromStorage() {
   const calculationDisplay = document.querySelector(".js-input-display");
   const historyContainer = document.querySelector(".js-history-container");
   calculationDisplay.value = localStorage.getItem("calculation");
   const storedCalculation = localStorage.getItem("calculationHistory");
+
   if (storedCalculation) {
     calculation = JSON.parse(storedCalculation);
   } else {
@@ -143,6 +179,7 @@ function getFromStorage() {
     JSON.parse(localStorage.getItem("historyContainer")) || ``;
 }
 
+// Show History
 function showHistory() {
   const history = document.querySelector(".js-history");
   history.classList.toggle("hide");
